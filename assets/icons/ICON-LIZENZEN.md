@@ -22,6 +22,7 @@ Status: **aktiv** = aktuell in der DOCX eingebunden · **Reserve** = lokal vorha
 | Geburtsdatum | `calendar` | `svg/calendar.svg` | `calendar_1A1A1A.png` / `calendar_C9B599.png` | aktiv | Lebenslauf, personenbezogene Daten |
 | Website | `world` | `svg/world.svg` | `world_1A1A1A.png` / `world_C9B599.png` | aktiv (optional) | Kontaktdaten |
 | Name / Person | `user` | `svg/user.svg` | `user_1A1A1A.png` / `user_C9B599.png` | aktiv | Lebenslauf, Namenszeile |
+| Interessen (generisch) | `compass` | `svg/compass.svg` | `compass_1A1A1A.png` / `compass_C9B599.png` | aktiv | Interessen & Hobbys (3 Zellen) |
 | Schulbildung | `school` | `svg/school.svg` | `school_C9B599.png` / `school_1A1A1A.png` | aktiv | Lebenslauf-Bereich |
 | Praktische Erfahrungen | `briefcase` | `svg/briefcase.svg` | `briefcase_C9B599.png` / `briefcase_1A1A1A.png` | aktiv | Lebenslauf-Bereich |
 | Kenntnisse & Kompetenzen | `adjustments` | `svg/adjustments.svg` | `adjustments_C9B599.png` / `adjustments_1A1A1A.png` | aktiv | Lebenslauf-Bereich |
@@ -41,6 +42,7 @@ map-pin             → Tabler Icons → MIT → offizielle Quelle → svg/map-p
 calendar            → Tabler Icons → MIT → offizielle Quelle → svg/calendar.svg
 world               → Tabler Icons → MIT → offizielle Quelle → svg/world.svg
 user                → Tabler Icons → MIT → offizielle Quelle → svg/user.svg
+compass             → Tabler Icons → MIT → offizielle Quelle → svg/compass.svg
 school              → Tabler Icons → MIT → offizielle Quelle → svg/school.svg
 briefcase           → Tabler Icons → MIT → offizielle Quelle → svg/briefcase.svg
 adjustments         → Tabler Icons → MIT → offizielle Quelle → svg/adjustments.svg
@@ -79,3 +81,5 @@ done
   `dumbbell` (Hantel, Stärke/Belastbarkeit) gewählt statt eines Bizeps-Icons aus einem
   fremden Set.
 - **Profil-/Mensch-Icon** für die Namenszeile im Lebenslauf: `user` (Outline).
+- **Icon-Farbrolle (V3):** alle in der DOCX eingebundenen Icons nutzen ausschließlich
+  `#1A1A1A` (eine Farbrolle, D8). Die `C9B599`-Varianten bleiben als Reserve im Repo.
