@@ -96,7 +96,7 @@ fette Betreffzeile, Anrede, Grußformel, Unterschriftszone) bleiben DIN-orientie
 
 - Ein Platzhalter = **ein Run** (Helfer im Build-Skript garantiert das).
 - Namen: `BEWERBER_*`, `FIRMA_*`, nummerierte Blöcke `SCHULE_n_*`, `PRAKTIKUM_n_*`,
-  `STAERKE_n`, `HOBBY_n`, Leitfragen `ANSCREIBEN_*`, `MOTIVATION_*`.
+  `STAERKE_n`, `HOBBY_n`, Leitfragen `ANSCHREIBEN_*`, `MOTIVATION_*`.
 - Vertrag: `platzhalter.json` (Key, Beschreibung, Beispiel, required, Dokumentteil).
 - Füllung: `node build_template.js --data profil.json`; leere optionale Werte entfernen
   die zugehörige Zeile (Zeilen tragen Formatvorlage `Mappe Optional`).

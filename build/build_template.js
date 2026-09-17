@@ -26,11 +26,16 @@ if (dataIdx !== -1 && process.argv[dataIdx + 1]) {
   DATA = JSON.parse(fs.readFileSync(process.argv[dataIdx + 1], "utf-8"));
 }
 // p(key): Profilwert oder [KEY]; Optionals: val(key) === undefined → Zeile entfällt
+// P0-1 (Stufe 2): gefüllte Werte NIE mit MappePlatzhalter-Stil (grau unterlegt) —
+// Leerwert behält Platzhalter-Stil, Füllwert bekommt Tinte; bewusste Overrides
+// (z. B. bold im Betreff) gewinnen, weil ...opts NACH color gespreizt wird.
 const val = (key) => (DATA ? DATA[key] : undefined);
 const p = (key, opts = {}) => {
   const v = val(key);
-  const text = v === undefined || v === null || v === "" ? `[${key}]` : v;
-  return new TextRun({ text, style: "MappePlatzhalter", ...opts });
+  const isEmpty = v === undefined || v === null || v === "";
+  return isEmpty
+    ? new TextRun({ text: `[${key}]`, style: "MappePlatzhalter", ...opts })
+    : new TextRun({ text: v, color: INK, ...opts });
 };
 const t = (text, opts = {}) => new TextRun({ text, ...opts });
 
@@ -349,7 +354,7 @@ const anschreiben = [
     ],
   }),
   new Paragraph({ spacing: { before: 240, after: 0 }, children: [] }),
-  new Paragraph({ style: "MappeDatum", alignment: AlignmentType.RIGHT, children: [p("DATUM_ANSCREIBEN")] }),
+  new Paragraph({ style: "MappeDatum", alignment: AlignmentType.RIGHT, children: [p("DATUM_ANSCHREIBEN")] }),
   new Paragraph({ spacing: { before: 240, after: 0 }, children: [] }),
   new Paragraph({
     style: "MappeFliesstext",
@@ -367,11 +372,11 @@ const anschreiben = [
   ),
   new Paragraph({ spacing: { before: 200, after: 0 }, children: [] }),
   new Paragraph({ style: "MappeFliesstext", children: [t("Sehr geehrte/r "), p("FIRMA_ANSPRECHPARTNER"), t(",")] }),
-  new Paragraph({ style: "MappeFliesstext", spacing: { after: 200 }, children: [p("ANSCREIBEN_EINSTIEG")] }),
-  new Paragraph({ style: "MappeFliesstext", spacing: { after: 200 }, children: [p("ANSCREIBEN_BERUF")] }),
-  new Paragraph({ style: "MappeFliesstext", spacing: { after: 200 }, children: [p("ANSCREIBEN_PRAXIS")] }),
-  new Paragraph({ style: "MappeFliesstext", spacing: { after: 200 }, children: [p("ANSCREIBEN_ABSCHLUSS")] }),
-  new Paragraph({ style: "MappeFliesstext", spacing: { after: 240 }, children: [p("ANSCREIBEN_SCHLUSS")] }),
+  new Paragraph({ style: "MappeFliesstext", spacing: { after: 200 }, children: [p("ANSCHREIBEN_EINSTIEG")] }),
+  new Paragraph({ style: "MappeFliesstext", spacing: { after: 200 }, children: [p("ANSCHREIBEN_BERUF")] }),
+  new Paragraph({ style: "MappeFliesstext", spacing: { after: 200 }, children: [p("ANSCHREIBEN_PRAXIS")] }),
+  new Paragraph({ style: "MappeFliesstext", spacing: { after: 200 }, children: [p("ANSCHREIBEN_ABSCHLUSS")] }),
+  new Paragraph({ style: "MappeFliesstext", spacing: { after: 240 }, children: [p("ANSCHREIBEN_SCHLUSS")] }),
   new Paragraph({ style: "MappeFliesstext", children: [t("Freundliche Grüße")] }),
   // Unterschriftszone: 3 Zeilen Freiraum mit sichtbarer Baseline (D9)
   new Paragraph({
@@ -553,9 +558,9 @@ const lebenslauf = [
     children: [icon("adjustments_1A1A1A.png", 16), t("  ", { size: 22 }), t("KENNTNISSE & KOMPETENZEN")],
   }),
   kenntnisseTable([
-    kenntnisRow("device-desktop-code_1A1A1A.png", "Softwarekenntnisse", [p("KENNNTNIS_SOFTWARE"), t(" — "), p("KENNNTNIS_SOFTWARE_LEVEL")]),
-    kenntnisRow("language_1A1A1A.png", "Sprachkenntnisse", [p("KENNNTNIS_SPRACHE"), t(" — "), p("KENNNTNIS_SPRACHE_LEVEL")]),
-    kenntnisRow("cube-3d-sphere_1A1A1A.png", "CAD & Konstruktion", [p("KENNNTNIS_CAD")]),
+    kenntnisRow("device-desktop-code_1A1A1A.png", "Softwarekenntnisse", [p("KENNTNIS_SOFTWARE"), t(" — "), p("KENNTNIS_SOFTWARE_LEVEL")]),
+    kenntnisRow("language_1A1A1A.png", "Sprachkenntnisse", [p("KENNTNIS_SPRACHE"), t(" — "), p("KENNTNIS_SPRACHE_LEVEL")]),
+    kenntnisRow("cube-3d-sphere_1A1A1A.png", "CAD & Konstruktion", [p("KENNTNIS_CAD")]),
     kenntnisRow("dumbbell_1A1A1A.png", "Persönliche Stärken", [p("STAERKE_1"), t(", "), p("STAERKE_2"), t(", "), p("STAERKE_3")]),
   ]),
 

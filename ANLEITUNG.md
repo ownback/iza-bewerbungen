@@ -49,8 +49,8 @@ Vollständige Liste mit Beispielen: **`platzhalter.json`**
 | `AUSBILDUNGSBERUF` | offizielle Berufsbezeichnung |
 | `DATUM_*` | Datumsangaben im Format `TT.MM.JJJJ` |
 | `SCHULE_n_*`, `PRAKTIKUM_n_*` | nummerierte Lebenslauf-Blöcke |
-| `KENNNTNIS_*`, `STAERKE_n`, `HOBBY_n` | Kenntnisse, Stärken, Interessen |
-| `ANSCREIBEN_*`, `MOTIVATION_*` | Textbausteine (Beschreibung/Beispiele in `platzhalter.json`) |
+| `KENNTNIS_*`, `STAERKE_n`, `HOBBY_n` | Kenntnisse, Stärken, Interessen |
+| `ANSCHREIBEN_*`, `MOTIVATION_*` | Textbausteine (Beschreibung/Beispiele in `platzhalter.json`) |
 | `STELLE_FUNDORT_REFNR`, `FIRMA_ABTEILUNG`, `BEWERBER_WEBSITE`, `SCHULE_2_*`, `PRAKTIKUM_2_*`, `ANLAGE_WEITERE` | **optional** — Zeile löschen, falls leer |
 
 ## Foto einsetzen
