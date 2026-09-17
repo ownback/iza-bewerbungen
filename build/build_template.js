@@ -38,6 +38,10 @@ const p = (key, opts = {}) => {
     : new TextRun({ text: v, color: INK, ...opts });
 };
 const t = (text, opts = {}) => new TextRun({ text, ...opts });
+// P0-3 (Befund aus B.6, Stufe 2): Hinweis-Suffixe der Optional-Zeilen gehören nur
+// in die leere Master-Vorlage. In gefüllten Dokumenten (--data) bleiben sie weg,
+// damit keine „Zeile löschen"-Anweisungen ins Versand-PDF gelangen.
+const hint = (text) => (DATA ? [] : [t(text)]);
 
 // Optionale Zeile: bei --data mit leerem/null Wert entfällt sie komplett (Formatvorlage Mappe Optional)
 // Aufruf: optionalLine(key, elementOderFn) ODER optionalLine(key, hinweis, elementOderFn)
@@ -244,7 +248,7 @@ const deckblatt = [
       spacing: { before: 60 },
       children: [
         icon("world_1A1A1A.png", 14), t("  ", { size: 18 }), p("BEWERBER_WEBSITE"),
-        t("  — Zeile löschen, falls nicht vorhanden"),
+        ...hint("  — Zeile löschen, falls nicht vorhanden"),
       ],
     })
   ),
@@ -284,7 +288,7 @@ const deckblatt = [
                   style: "MappeListe",
                   children: [
                     p("ANLAGE_WEITERE"),
-                    t(" — optional, sonst Zeile löschen"),
+                    ...hint(" — optional, sonst Zeile löschen"),
                   ],
                 })
               ),
@@ -342,7 +346,7 @@ const anschreiben = [
             ...optionalLine("FIRMA_ABTEILUNG", "Abteilung", () =>
               new Paragraph({
                 style: "MappeAdresse",
-                children: [p("FIRMA_ABTEILUNG"), t(" — Zeile löschen, falls nicht vorhanden")],
+                children: [p("FIRMA_ABTEILUNG"), ...hint(" — Zeile löschen, falls nicht vorhanden")],
               })
             ),
             [p("FIRMA_ANSPRECHPARTNER")],
@@ -366,7 +370,7 @@ const anschreiben = [
       style: "MappeOptional",
       children: [
         p("STELLE_FUNDORT_REFNR"),
-        t(" — Fundort / Referenznummer, Zeile löschen, falls nicht vorhanden"),
+        ...hint(" — Fundort / Referenznummer, Zeile löschen, falls nicht vorhanden"),
       ],
     })
   ),
